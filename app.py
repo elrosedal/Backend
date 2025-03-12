@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:3000'])
+CORS(app, origins=['https://www.elrosedal.es/', 'https://www.elrosedal.es', 'https://elrosedal.es/', 'https://elrosedal.es' ])
 
 def send_email(subject, content):
     user = os.getenv('USER')
@@ -17,7 +17,7 @@ def send_email(subject, content):
 
     em = EmailMessage()
     em['From'] = user
-    em['To'] = "bazand25@gmail.com"
+    em['To'] = "rgelrosedal241@gmail.com"
     em['Subject'] = subject
     em.set_content(content)
 
@@ -26,7 +26,7 @@ def send_email(subject, content):
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
             smtp.login(user, app_password)
-            smtp.sendmail(user, "bazand25@gmail.com", em.as_string())
+            smtp.sendmail(user, "rgelrosedal241@gmail.com", em.as_string())
     except Exception as e:
         return {'success': False, 'message': str(e)}
     
